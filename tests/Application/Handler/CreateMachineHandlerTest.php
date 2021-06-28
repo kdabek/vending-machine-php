@@ -24,7 +24,7 @@ class CreateMachineHandlerTest extends TestCase
         parent::setUp();
 
         $this->repository = $this->getMockForAbstractClass(MachineRepository::class);
-        $this->handler    = new CreateMachineHandler($this->repository);
+        $this->handler = new CreateMachineHandler($this->repository);
     }
 
     public function testMachineExists()

@@ -7,13 +7,13 @@ namespace VendingMachine\Domain\Coin;
 final class Coin
 {
     private ShortCode $code;
-    private Money     $amount;
-    private Quantity  $quantity;
+    private Money $amount;
+    private Quantity $quantity;
 
     private function __construct(ShortCode $code, Money $amount, Quantity $quantity)
     {
-        $this->code     = $code;
-        $this->amount   = $amount;
+        $this->code = $code;
+        $this->amount = $amount;
         $this->quantity = $quantity;
     }
 

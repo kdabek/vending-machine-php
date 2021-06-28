@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace VendingMachine\Application\Service;
 
 use PHPUnit\Framework\TestCase;
-use VendingMachine\Domain\Coin\Command\InsertCoin;
 use VendingMachine\Application\Kernel\Kernel;
 use VendingMachine\Domain\Coin\Command\CreateCoin;
+use VendingMachine\Domain\Coin\Command\InsertCoin;
 use VendingMachine\Domain\Coin\Command\ReturnCoin;
 use VendingMachine\Domain\Machine\Command\CreateMachine;
 use VendingMachine\Domain\Machine\Query\GetMachine;
@@ -15,14 +15,14 @@ use VendingMachine\ObjectMother\Machine\MachineViewMother;
 
 class VendingServiceTest extends TestCase
 {
-    private Kernel         $kernel;
+    private Kernel $kernel;
     private VendingService $service;
 
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->kernel  = $this->getMockForAbstractClass(Kernel::class);
+        $this->kernel = $this->getMockForAbstractClass(Kernel::class);
         $this->service = new VendingService($this->kernel);
     }
 

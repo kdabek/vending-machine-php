@@ -27,7 +27,7 @@ class CreateCoinHandlerTest extends TestCase
         parent::setUp();
 
         $this->repository = $this->getMockForAbstractClass(MachineRepository::class);
-        $this->handler    = new CreateCoinHandler($this->repository);
+        $this->handler = new CreateCoinHandler($this->repository);
     }
 
     public function testMachineNotFound()
@@ -35,7 +35,7 @@ class CreateCoinHandlerTest extends TestCase
         $this->expectException(MachineNotFoundException::class);
         $this->repository->method('findOne')->willReturn(null);
         $shortCode = ShortCode::fromString('D');
-        $quantity  = Quantity::fromInteger(10);
+        $quantity = Quantity::fromInteger(10);
         $this->handler->handle(CreateCoin::withData($shortCode->getCode(), $quantity->count()));
     }
 
@@ -44,7 +44,7 @@ class CreateCoinHandlerTest extends TestCase
         $this->expectException(CoinAlreadyExist::class);
         $this->expectErrorMessage('Coin with shortcode "D" already exists.');
         $shortCode = ShortCode::fromString('D');
-        $quantity  = Quantity::fromInteger(10);
+        $quantity = Quantity::fromInteger(10);
         $this->repository->method('findOne')->willReturn(new Machine());
         $this->handler->handle(CreateCoin::withData($shortCode->getCode(), $quantity->count()));
         $this->handler->handle(CreateCoin::withData($shortCode->getCode(), $quantity->count()));
@@ -53,8 +53,8 @@ class CreateCoinHandlerTest extends TestCase
     public function testCreateCoin()
     {
         $shortCode = ShortCode::fromString('D');
-        $quantity  = Quantity::fromInteger(10);
-        $machine   = new Machine();
+        $quantity = Quantity::fromInteger(10);
+        $machine = new Machine();
         $this->repository->method('findOne')->willReturn($machine);
         $this->repository->expects($this->once())->method('save')->with($machine);
         $this->handler->handle(CreateCoin::withData($shortCode->getCode(), $quantity->count()));

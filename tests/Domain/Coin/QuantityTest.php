@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace VendingMachine\Domain\Coin;
 
-use LogicException;
 use InvalidArgumentException;
+use LogicException;
 use PHPUnit\Framework\TestCase;
 
 class QuantityTest extends TestCase

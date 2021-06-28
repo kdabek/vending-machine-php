@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace VendingMachine\Domain\Coin;
 
 use Countable;
-use LogicException;
 use InvalidArgumentException;
+use LogicException;
 
 final class Quantity implements Countable
 {

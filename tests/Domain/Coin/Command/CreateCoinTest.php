@@ -10,7 +10,7 @@ class CreateCoinTest extends TestCase
 {
     public function testInstance(): CreateCoin
     {
-        $command = CreateCoin::withData('D',  3);
+        $command = CreateCoin::withData('D', 3);
         $this->assertInstanceOf(CreateCoin::class, $command);
 
         return $command;

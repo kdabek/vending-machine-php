@@ -11,9 +11,12 @@ use VendingMachine\Domain\Coin\View\Coin;
 /**
  * @todo Add Response, catch exceptions in handler
  */
-final class VendingMachine {
+final class VendingMachine
+{
 
-    public function __construct(private VendingService $vendingService){}
+    public function __construct(private VendingService $vendingService)
+    {
+    }
 
     public function insertCoin(string $shortCode): void
     {
@@ -29,8 +32,7 @@ final class VendingMachine {
         try {
             $coins = $this->vendingService->returnCoins();
 
-            echo implode(',', array_map(fn(Coin $coin): string =>
-                implode(',', array_fill(0, $coin->getQuantity(), $coin->getShortCode())),
+            echo implode(',', array_map(fn(Coin $coin): string => implode(',', array_fill(0, $coin->getQuantity(), $coin->getShortCode())),
                 $coins
             ));
 

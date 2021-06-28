@@ -8,15 +8,15 @@ class Coin
 {
     private string $shortCode;
     private string $currency;
-    private int    $amount;
-    private int    $quantity;
+    private int $amount;
+    private int $quantity;
 
     public function __construct(string $shortCode, string $currency, int $amount, int $quantity)
     {
         $this->shortCode = $shortCode;
-        $this->currency  = $currency;
-        $this->amount    = $amount;
-        $this->quantity  = $quantity;
+        $this->currency = $currency;
+        $this->amount = $amount;
+        $this->quantity = $quantity;
     }
 
     public function getShortCode(): string

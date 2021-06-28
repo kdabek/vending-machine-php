@@ -11,7 +11,9 @@ use VendingMachine\Domain\Machine\MachineRepository;
 
 final class CreateMachineHandler
 {
-    public function __construct(private MachineRepository $repository){}
+    public function __construct(private MachineRepository $repository)
+    {
+    }
 
     public function handle(CreateMachine $command): void
     {

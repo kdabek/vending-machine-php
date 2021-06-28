@@ -11,6 +11,7 @@ abstract class MessageBus
     protected array $handlers = [];
 
     abstract protected function messageType(): string;
+
     abstract public function dispatch(object $message);
 
     public function attach(string $eventName, callable $handler)

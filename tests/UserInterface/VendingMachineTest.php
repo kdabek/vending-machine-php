@@ -17,7 +17,7 @@ final class VendingMachineTest extends TestCase
 
     public function setUp(): void
     {
-        $this->service        = $this->getMockBuilder(VendingService::class)
+        $this->service = $this->getMockBuilder(VendingService::class)
             ->disableOriginalConstructor()
             ->getMock();
         $this->vendingMachine = new VendingMachine($this->service);

@@ -10,5 +10,6 @@ use VendingMachine\Domain\Shared\Query\QueryInterface;
 interface Kernel
 {
     public function handle(CommandInterface $command): void;
+
     public function query(QueryInterface $query): object;
 }

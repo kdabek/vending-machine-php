@@ -12,14 +12,14 @@ use function mb_strtoupper;
  */
 final class Money
 {
-    private const  VALID_CURRENCIES = ['USD'];
-    private int    $amount;
+    private const VALID_CURRENCIES = ['USD'];
+    private int $amount;
     private string $currency;
 
     private function __construct(int $amount, string $currency)
     {
         $this->validate($amount, $currency);
-        $this->amount   = $amount;
+        $this->amount = $amount;
         $this->currency = $currency;
     }
 

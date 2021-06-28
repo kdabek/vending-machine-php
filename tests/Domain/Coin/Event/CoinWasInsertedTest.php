@@ -11,13 +11,13 @@ use VendingMachine\Domain\Coin\ShortCode;
 class CoinWasInsertedTest extends TestCase
 {
     private ShortCode $code;
-    private Quantity  $quantity;
+    private Quantity $quantity;
 
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->code     = ShortCode::fromString('DOL');
+        $this->code = ShortCode::fromString('DOL');
         $this->quantity = Quantity::fromInteger(1);
     }
 

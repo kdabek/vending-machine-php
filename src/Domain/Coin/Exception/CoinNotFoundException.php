@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace VendingMachine\Domain\Coin\Exception;
 
-use Throwable;
 use RuntimeException;
+use Throwable;
 use VendingMachine\Domain\Coin\ShortCode;
 
 final class CoinNotFoundException extends RuntimeException

@@ -6,7 +6,9 @@ namespace VendingMachine\Domain\Machine\View;
 
 class Machine
 {
-    public function __construct(private int $totalBalance, private int $clientBalance, private array $coins){}
+    public function __construct(private int $totalBalance, private int $clientBalance, private array $coins)
+    {
+    }
 
     public function getTotalBalance(): int
     {

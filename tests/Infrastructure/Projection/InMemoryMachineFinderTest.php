@@ -6,21 +6,21 @@ namespace VendingMachine\Infrastructure\Projection;
 
 use PHPUnit\Framework\TestCase;
 use VendingMachine\Domain\Machine\Exception\MachineNotFoundException;
-use VendingMachine\Domain\Machine\View\Machine;
 use VendingMachine\Domain\Machine\MachineRepository;
+use VendingMachine\Domain\Machine\View\Machine;
 use VendingMachine\ObjectMother\Machine\MachineMother;
 
 class InMemoryMachineFinderTest extends TestCase
 {
     private InMemoryMachineFinder $finder;
-    private MachineRepository     $repository;
+    private MachineRepository $repository;
 
     protected function setUp(): void
     {
         parent::setUp();
 
         $this->repository = $this->getMockForAbstractClass(MachineRepository::class);
-        $this->finder     = new InMemoryMachineFinder($this->repository);
+        $this->finder = new InMemoryMachineFinder($this->repository);
     }
 
     public function testMachineNotFound()

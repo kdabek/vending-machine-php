@@ -12,9 +12,9 @@ class CoinTest extends TestCase
     public function testCreate(): Coin
     {
         $shortCode = ShortCode::fromString('Q');
-        $amount    = MoneyFactory::fromShortCode($shortCode);
-        $quantity  = Quantity::fromInteger(10);
-        $coin      = Coin::withData($shortCode, $amount, $quantity);
+        $amount = MoneyFactory::fromShortCode($shortCode);
+        $quantity = Quantity::fromInteger(10);
+        $coin = Coin::withData($shortCode, $amount, $quantity);
 
         $this->assertInstanceOf(Coin::class, $coin);
 
@@ -29,8 +29,8 @@ class CoinTest extends TestCase
     public function testGetters(Coin $coin)
     {
         $shortCode = $coin->getShortCode();
-        $amount    = $coin->getAmount();
-        $quantity  = $coin->getQuantity();
+        $amount = $coin->getAmount();
+        $quantity = $coin->getQuantity();
         $this->assertInstanceOf(ShortCode::class, $shortCode);
         $this->assertInstanceOf(Money::class, $amount);
         $this->assertInstanceOf(Quantity::class, $quantity);

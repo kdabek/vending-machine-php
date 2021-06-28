@@ -34,7 +34,8 @@ class CommandBusTest extends TestCase
         };
 
         $handler = new class() {
-            public function handle(object $command) {
+            public function handle(object $command)
+            {
                 echo $command->getName();
             }
         };

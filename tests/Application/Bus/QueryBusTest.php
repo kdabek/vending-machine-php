@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace VendingMachine\Application\Bus;
 
-use stdClass;
 use PHPUnit\Framework\TestCase;
+use stdClass;
 
 class QueryBusTest extends TestCase
 {
@@ -25,7 +25,7 @@ class QueryBusTest extends TestCase
 
             public function __construct(string $name)
             {
-                $this->object       = new stdClass();
+                $this->object = new stdClass();
                 $this->object->name = $name;
             }
 
@@ -36,7 +36,8 @@ class QueryBusTest extends TestCase
         };
 
         $handler = new class() {
-            public function handle(object $command) {
+            public function handle(object $command)
+            {
                 return $command->getObject();
             }
         };

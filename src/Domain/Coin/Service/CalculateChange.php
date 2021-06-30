@@ -8,6 +8,7 @@ use VendingMachine\Domain\Coin\Exception\CoinChangeException;
 use VendingMachine\Domain\Coin\Exception\CoinCountException;
 use VendingMachine\Domain\Coin\View\Coin;
 use VendingMachine\Domain\Shared\Exception\BalanceException;
+
 use function array_filter;
 use function count;
 use function in_array;
@@ -50,8 +51,9 @@ final class CalculateChange
 
         foreach ($this->coins as $coin) {
             for ($i = 0; $i < $coin->getQuantity(); $i++) {
-                if ($this->balance < $coin->getAmount())
+                if ($this->balance < $coin->getAmount()) {
                     break;
+                }
                 $this->balance -= $coin->getAmount();
             }
 

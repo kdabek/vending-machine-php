@@ -30,8 +30,7 @@ final class InMemoryMachineFinder implements MachineFinder
             $coin->getAmount()->getCurrency(),
             $coin->getAmount()->getAmount(),
             $coin->getQuantity()->count()
-        ), $machine->getCoins()
-        );
+        ), $machine->getCoins());
 
         return new Machine(
             $machine->getTotalBalance()->getAmount(),

@@ -13,7 +13,6 @@ use VendingMachine\Domain\Coin\View\Coin;
  */
 final class VendingMachine
 {
-
     public function __construct(private VendingService $vendingService)
     {
     }
@@ -31,10 +30,17 @@ final class VendingMachine
     {
         try {
             $coins = $this->vendingService->returnCoins();
-
-            echo implode(',', array_map(fn(Coin $coin): string => implode(',', array_fill(0, $coin->getQuantity(), $coin->getShortCode())),
+            /**
+             * @todo move it to class (Response or Resource?)
+             */
+            $shortCodes = array_map(
+                fn(Coin $coin): array => array_fill(0, $coin->getQuantity(), $coin->getShortCode()),
                 $coins
-            ));
+            );
+
+            $shortCodes = call_user_func_array('array_merge', $shortCodes);
+
+            echo implode(',', $shortCodes);
 
         } catch (Exception $e) {
             echo $e->getMessage();

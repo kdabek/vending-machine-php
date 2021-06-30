@@ -5,11 +5,7 @@ declare(strict_types=1);
 namespace VendingMachine\Application\Service;
 
 use VendingMachine\Application\Kernel\Kernel;
-use VendingMachine\Domain\Coin\Command\{
-    CreateCoin,
-    InsertCoin,
-    ReturnCoin,
-};
+use VendingMachine\Domain\Coin\Command\{CreateCoin, InsertCoin, ReturnCoin,};
 use VendingMachine\Domain\Coin\Service\CalculateChange;
 use VendingMachine\Domain\Coin\ShortCode;
 use VendingMachine\Domain\Machine\Command\CreateMachine;
@@ -42,9 +38,9 @@ class VendingService
     public function returnCoins(): array
     {
         /** @var Machine $machine */
-        $machine    = $this->kernel->query(new GetMachine());
+        $machine = $this->kernel->query(new GetMachine());
         $calculator = new CalculateChange($machine->getClientBalance(), $machine->getCoins());
-        $change     = $calculator->change();
+        $change = $calculator->change();
 
         foreach ($change as $coin) {
             $this->kernel->handle(ReturnCoin::withData($coin->getShortCode(), $coin->getQuantity()));

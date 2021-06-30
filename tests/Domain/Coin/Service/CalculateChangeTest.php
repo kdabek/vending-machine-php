@@ -58,7 +58,7 @@ class CalculateChangeTest extends TestCase
     public function testChange(int $balance, array $expectedChange)
     {
         $calculator = new CalculateChange($balance, CoinCollectionMother::filled());
-        $change     = $calculator->change();
+        $change = $calculator->change();
         $this->assertEquals($expectedChange, $change);
     }
 

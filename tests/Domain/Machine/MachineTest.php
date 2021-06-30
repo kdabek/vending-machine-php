@@ -57,7 +57,7 @@ class MachineTest extends TestCase
     public function testCreateCoin(Machine $machine): Machine
     {
         $shortCode = ShortCode::fromString('D');
-        $quantity  = Quantity::fromInteger(10);
+        $quantity = Quantity::fromInteger(10);
 
         $machine->createCoin($shortCode, $quantity);
         $this->assertCount(1, $machine->getCoins());
@@ -81,7 +81,7 @@ class MachineTest extends TestCase
     public function testInsertCoin(Machine $machine): Machine
     {
         $shortCode = ShortCode::fromString('D');
-        $quantity  = Quantity::fromInteger(1);
+        $quantity = Quantity::fromInteger(1);
         $machine->insertCoin($shortCode, $quantity);
         $coin = $machine->getCoins()[(string)$shortCode];
         $this->assertInstanceOf(Coin::class, $coin);
@@ -100,7 +100,7 @@ class MachineTest extends TestCase
     public function testReturnCoin(Machine $machine)
     {
         $shortCode = ShortCode::fromString('D');
-        $quantity  = Quantity::fromInteger(1);
+        $quantity = Quantity::fromInteger(1);
         $machine->returnCoin($shortCode, $quantity);
         $coin = $machine->getCoins()[(string)$shortCode];
         $this->assertInstanceOf(Coin::class, $coin);
@@ -119,7 +119,7 @@ class MachineTest extends TestCase
         $this->expectException(BalanceException::class);
         $this->expectExceptionMessage('Machine balance is less than expected.');
         $shortCode = ShortCode::fromString('D');
-        $quantity  = Quantity::fromInteger(11);
+        $quantity = Quantity::fromInteger(11);
         $machine->returnCoin($shortCode, $quantity);
     }
 
@@ -133,7 +133,7 @@ class MachineTest extends TestCase
         $this->expectException(BalanceException::class);
         $this->expectExceptionMessage('Client balance is less than expected.');
         $shortCode = ShortCode::fromString('D');
-        $quantity  = Quantity::fromInteger(2);
+        $quantity = Quantity::fromInteger(2);
         $machine->returnCoin($shortCode, $quantity);
     }
 }

@@ -12,15 +12,15 @@ use VendingMachine\Domain\Coin\ShortCode;
 class CoinWasReturnedTest extends TestCase
 {
     private ShortCode $code;
-    private Money     $amount;
-    private Quantity  $quantity;
+    private Money $amount;
+    private Quantity $quantity;
 
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->code     = ShortCode::fromString('DOL');
-        $this->amount   = Money::USD(100);
+        $this->code = ShortCode::fromString('DOL');
+        $this->amount = Money::USD(100);
         $this->quantity = Quantity::fromInteger(1);
     }
 

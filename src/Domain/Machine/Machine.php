@@ -5,30 +5,19 @@ declare(strict_types=1);
 namespace VendingMachine\Domain\Machine;
 
 use ArrayObject;
+use VendingMachine\Domain\Coin\{Money, Quantity, ShortCode,};
 use VendingMachine\Domain\Coin\Coin;
-use VendingMachine\Domain\Coin\Event\{
-    CoinWasCreated,
-    CoinWasInserted,
-    CoinWasReturned,
-};
-use VendingMachine\Domain\Coin\Exception\{
-    CoinAlreadyExist,
-    CoinNotFoundException,
-};
+use VendingMachine\Domain\Coin\Event\{CoinWasCreated, CoinWasInserted, CoinWasReturned,};
+use VendingMachine\Domain\Coin\Exception\{CoinAlreadyExist, CoinNotFoundException,};
 use VendingMachine\Domain\Coin\Factory\MoneyFactory;
-use VendingMachine\Domain\Coin\{
-    Money,
-    Quantity,
-    ShortCode,
-};
 use VendingMachine\Domain\Machine\Event\MachineWasCreated;
-use VendingMachine\Domain\Shared\Exception\BalanceException;
 use VendingMachine\Domain\Shared\Aggregate\AggregateRoot;
+use VendingMachine\Domain\Shared\Exception\BalanceException;
 
 final class Machine extends AggregateRoot
 {
-    private Money       $totalBalance;
-    private Money       $clientBalance;
+    private Money $totalBalance;
+    private Money $clientBalance;
     private ArrayObject $coins;
 
     public function __construct()
@@ -92,8 +81,8 @@ final class Machine extends AggregateRoot
 
     protected function whenMachineWasCreated(MachineWasCreated $event): void
     {
-        $this->coins         = new ArrayObject();
-        $this->totalBalance  = Money::USD(0);
+        $this->coins = new ArrayObject();
+        $this->totalBalance = Money::USD(0);
         $this->clientBalance = Money::USD(0);
     }
 
@@ -115,7 +104,7 @@ final class Machine extends AggregateRoot
         $this->coins->offsetSet((string)$coin->getShortCode(), $coin);
 
         for ($i = 0; $i < $event->getQuantity()->count(); $i++) {
-            $this->totalBalance  = $this->totalBalance->add($coin->getAmount());
+            $this->totalBalance = $this->totalBalance->add($coin->getAmount());
             $this->clientBalance = $this->clientBalance->add($coin->getAmount());
         }
     }
@@ -128,7 +117,7 @@ final class Machine extends AggregateRoot
         $this->coins->offsetSet((string)$coin->getShortCode(), $coin);
 
         for ($i = 0; $i < $event->getQuantity()->count(); $i++) {
-            $this->totalBalance  = $this->totalBalance->sub($coin->getAmount());
+            $this->totalBalance = $this->totalBalance->sub($coin->getAmount());
             $this->clientBalance = $this->clientBalance->sub($coin->getAmount());
         }
     }

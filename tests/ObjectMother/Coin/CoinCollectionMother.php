@@ -14,7 +14,7 @@ class CoinCollectionMother
     {
         $coins = [];
 
-        foreach (ShortCode::VALID_SHORTCODES as $shortCode => $amount){
+        foreach (ShortCode::VALID_SHORTCODES as $shortCode => $amount) {
             $coins[] = new Coin(
                 $shortCode,
                 'USD',
@@ -30,8 +30,9 @@ class CoinCollectionMother
     {
         $coins = [];
 
-        foreach (ShortCode::VALID_SHORTCODES as $shortCode => $amount){
-            if (in_array($shortCode, CalculateChange::RETURN_COINS)) continue;
+        foreach (ShortCode::VALID_SHORTCODES as $shortCode => $amount) {
+            if (in_array($shortCode, CalculateChange::RETURN_COINS))
+                continue;
             $coins[] = new Coin(
                 $shortCode,
                 'USD',
@@ -47,8 +48,9 @@ class CoinCollectionMother
     {
         $coins = [];
 
-        foreach (ShortCode::VALID_SHORTCODES as $shortCode => $amount){
-            if (in_array($shortCode, CalculateChange::RETURN_COINS)) continue;
+        foreach (ShortCode::VALID_SHORTCODES as $shortCode => $amount) {
+            if (in_array($shortCode, CalculateChange::RETURN_COINS))
+                continue;
             $coins[] = new Coin(
                 $shortCode,
                 'USD',

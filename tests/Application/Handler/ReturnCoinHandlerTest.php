@@ -6,10 +6,10 @@ namespace VendingMachine\Application\Handler;
 
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
+use VendingMachine\Domain\Coin\Coin;
 use VendingMachine\Domain\Coin\Command\CreateCoin;
 use VendingMachine\Domain\Coin\Command\InsertCoin;
 use VendingMachine\Domain\Coin\Command\ReturnCoin;
-use VendingMachine\Domain\Coin\Coin;
 use VendingMachine\Domain\Coin\Exception\CoinNotFoundException;
 use VendingMachine\Domain\Coin\Quantity;
 use VendingMachine\Domain\Coin\ShortCode;
@@ -29,7 +29,7 @@ class ReturnCoinHandlerTest extends TestCase
     {
         parent::setUp();
 
-        $this->repository        = $this->getMockForAbstractClass(MachineRepository::class);
+        $this->repository = $this->getMockForAbstractClass(MachineRepository::class);
         $this->returnCoinHandler = new ReturnCoinHandler($this->repository);
     }
 
@@ -38,7 +38,7 @@ class ReturnCoinHandlerTest extends TestCase
         $this->expectException(MachineNotFoundException::class);
         $this->repository->method('findOne')->willReturn(null);
         $shortCode = ShortCode::fromString('D');
-        $quantity  = Quantity::fromInteger(10);
+        $quantity = Quantity::fromInteger(10);
         $this->returnCoinHandler->handle(ReturnCoin::withData($shortCode->getCode(), $quantity->count()));
     }
 
@@ -47,7 +47,7 @@ class ReturnCoinHandlerTest extends TestCase
         $this->expectException(CoinNotFoundException::class);
         $this->expectErrorMessage('Coin with shortcode "D" cannot be found.');
         $shortCode = ShortCode::fromString('D');
-        $quantity  = Quantity::fromInteger(10);
+        $quantity = Quantity::fromInteger(10);
         $this->repository->method('findOne')->willReturn(new Machine());
         $this->returnCoinHandler->handle(ReturnCoin::withData($shortCode->getCode(), $quantity->count()));
     }
@@ -56,9 +56,9 @@ class ReturnCoinHandlerTest extends TestCase
     {
         $createCoinHandler = new CreateCoinHandler($this->repository);
         $insertCoinHandler = new InsertCoinHandler($this->repository);
-        $machine           = new Machine();
-        $shortCode         = ShortCode::fromString('D');
-        $quantity          = Quantity::fromInteger(10);
+        $machine = new Machine();
+        $shortCode = ShortCode::fromString('D');
+        $quantity = Quantity::fromInteger(10);
         $this->repository->method('findOne')->willReturn($machine);
         $this->repository->expects($this->exactly(3))->method('save')->with($machine);
         $createCoinHandler->handle(CreateCoin::withData($shortCode->getCode(), $quantity->count()));

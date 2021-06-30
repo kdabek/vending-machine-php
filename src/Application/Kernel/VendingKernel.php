@@ -11,7 +11,9 @@ use VendingMachine\Domain\Shared\Query\QueryInterface;
 
 final class VendingKernel implements Kernel
 {
-    public function __construct(private CommandBus $commandBus, private QueryBus $queryBus){}
+    public function __construct(private CommandBus $commandBus, private QueryBus $queryBus)
+    {
+    }
 
     public function handle(CommandInterface $command): void
     {

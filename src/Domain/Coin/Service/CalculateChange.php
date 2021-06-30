@@ -10,14 +10,14 @@ use VendingMachine\Domain\Coin\View\Coin;
 use VendingMachine\Domain\Shared\Exception\BalanceException;
 
 use function array_filter;
-use function in_array;
 use function count;
+use function in_array;
 use function usort;
 
 final class CalculateChange
 {
     public const RETURN_COINS = ['D', 'Q', 'N'];
-    private int   $balance;
+    private int $balance;
     private array $coins;
 
     public function __construct(int $balance, array $coins)
@@ -37,7 +37,7 @@ final class CalculateChange
         }
 
         $this->balance = $balance;
-        $this->coins   = $coins;
+        $this->coins = $coins;
     }
 
     /**
@@ -50,8 +50,10 @@ final class CalculateChange
         usort($this->coins, fn(Coin $current, Coin $next) => $next->getAmount() <=> $current->getAmount());
 
         foreach ($this->coins as $coin) {
-            for ($i=0; $i<$coin->getQuantity(); $i++) {
-                if ($this->balance < $coin->getAmount()) break;
+            for ($i = 0; $i < $coin->getQuantity(); $i++) {
+                if ($this->balance < $coin->getAmount()) {
+                    break;
+                }
                 $this->balance -= $coin->getAmount();
             }
 

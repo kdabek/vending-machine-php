@@ -10,11 +10,11 @@ use VendingMachine\Domain\Coin\ShortCode;
 final class CoinWasInserted
 {
     private ShortCode $code;
-    private Quantity  $quantity;
+    private Quantity $quantity;
 
     private function __construct(ShortCode $code, Quantity $quantity)
     {
-        $this->code     = $code;
+        $this->code = $code;
         $this->quantity = $quantity;
     }
 

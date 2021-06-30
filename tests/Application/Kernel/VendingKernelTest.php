@@ -12,8 +12,8 @@ use VendingMachine\Domain\Shared\Query\QueryInterface;
 
 class VendingKernelTest extends TestCase
 {
-    private CommandBus    $commandBus;
-    private QueryBus      $queryBus;
+    private CommandBus $commandBus;
+    private QueryBus $queryBus;
     private VendingKernel $service;
 
     protected function setUp(): void
@@ -21,8 +21,8 @@ class VendingKernelTest extends TestCase
         parent::setUp();
 
         $this->commandBus = $this->getMockBuilder(CommandBus::class)->getMock();
-        $this->queryBus   = $this->getMockBuilder(QueryBus::class)->getMock();
-        $this->service    = new VendingKernel($this->commandBus, $this->queryBus);
+        $this->queryBus = $this->getMockBuilder(QueryBus::class)->getMock();
+        $this->service = new VendingKernel($this->commandBus, $this->queryBus);
     }
 
     public function testHandleCommand()

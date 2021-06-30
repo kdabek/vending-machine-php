@@ -9,12 +9,12 @@ use VendingMachine\Domain\Shared\Command\CommandInterface;
 final class ReturnCoin implements CommandInterface
 {
     private string $shortCode;
-    private int  $quantity;
+    private int $quantity;
 
     private function __construct(string $shortCode, int $quantity)
     {
         $this->shortCode = $shortCode;
-        $this->quantity  = $quantity;
+        $this->quantity = $quantity;
     }
 
     public static function withData(string $shortCode, int $quantity): self

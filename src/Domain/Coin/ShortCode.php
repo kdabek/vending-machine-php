@@ -4,8 +4,9 @@ declare(strict_types=1);
 
 namespace VendingMachine\Domain\Coin;
 
-use Stringable;
 use InvalidArgumentException;
+use Stringable;
+
 use function mb_strtoupper;
 
 final class ShortCode implements Stringable

@@ -27,7 +27,10 @@ final class ReturnCoinHandler
             throw new MachineNotFoundException();
         }
 
-        $machine->returnCoin(ShortCode::fromString($command->getShortCode()), Quantity::fromInteger($command->getQuantity()));
+        $machine->returnCoin(
+            ShortCode::fromString($command->getShortCode()),
+            Quantity::fromInteger($command->getQuantity())
+        );
 
         $this->repository->save($machine);
     }

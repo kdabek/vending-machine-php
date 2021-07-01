@@ -29,8 +29,8 @@ final class CreateCoinHandler
 
         $machine->createCoin(
             ShortCode::fromString($command->getShortCode()),
-            Quantity::fromInteger($command->getQuantity()))
-        ;
+            Quantity::fromInteger($command->getQuantity())
+        );
 
         $this->repository->save($machine);
     }

@@ -27,7 +27,10 @@ final class CreateCoinHandler
             throw new MachineNotFoundException();
         }
 
-        $machine->createCoin(ShortCode::fromString($command->getShortCode()), Quantity::fromInteger($command->getQuantity()));
+        $machine->createCoin(
+            ShortCode::fromString($command->getShortCode()),
+            Quantity::fromInteger($command->getQuantity())
+        );
 
         $this->repository->save($machine);
     }

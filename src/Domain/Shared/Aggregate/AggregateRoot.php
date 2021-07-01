@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace VendingMachine\Domain\Shared\Aggregate;
 
 use LogicException;
+
 use function array_slice;
 use function explode;
 use function get_class;

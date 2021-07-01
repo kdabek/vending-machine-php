@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace VendingMachine\Domain\Coin;
 
 use InvalidArgumentException;
+
 use function mb_strtoupper;
 
 /**

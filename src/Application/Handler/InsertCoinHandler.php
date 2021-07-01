@@ -27,7 +27,10 @@ final class InsertCoinHandler
             throw new MachineNotFoundException();
         }
 
-        $machine->insertCoin(ShortCode::fromString($command->getShortCode()), Quantity::fromInteger($command->getQuantity()));
+        $machine->insertCoin(
+            ShortCode::fromString($command->getShortCode()),
+            Quantity::fromInteger($command->getQuantity())
+        );
 
         $this->repository->save($machine);
     }
